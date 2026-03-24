@@ -1,0 +1,324 @@
+/* Main Container */
+.landing-container {
+    min-height: 100vh;
+    /* background: linear-gradient(135deg, rgb(2, 2, 26) 0%, rgb(4, 4, 65) 100%); */
+    background-color: #0a0b1e;
+    color: white;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+    padding-top: 8rem;
+  }
+  
+  .content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 4rem;
+    margin-bottom: 6rem;
+  }
+  
+  .hero-1, .hero-2 {
+    flex: 1;
+    max-width: 600px;
+  }
+  
+  /* Typography */
+  h1, h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  
+  .highlight {
+    background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+  }
+  
+  /* Crypto Cards */
+  .crypto-cards {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .crypto-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+  
+  .crypto-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Mobile Frame */
+  .mobile-frame {
+    background: rgb(22, 28, 36);
+    border-radius: 32px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 
+      0 50px 100px rgba(0, 0, 0, 0.25),
+      0 10px 30px rgba(0, 0, 0, 0.1),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  
+  .mobile-frame img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  
+  /* Images */
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    h1, h2 {
+      font-size: 2.8rem;
+    }
+    
+    .hero-section {
+      gap: 3rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .hero-section {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 4rem;
+    }
+  
+    .hero-1, .hero-2 {
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .landing-container {
+      padding: 2rem 1rem;
+    }
+  
+    h1, h2 {
+      font-size: 2.2rem;
+    }
+  
+    .subtitle {
+      font-size: 1.1rem;
+    }
+  }
+  
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
+
+  /* Header styles */
+  .header {
+    /* background-color: #2a2b30; */
+    /* padding: 40px 0; */
+    text-align: center;
+  }
+
+  .header h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+
+  .header .highlight {
+    color: #4CAF50;
+    font-weight: bold;
+  }
+
+  .highlight1{
+    color: #4CAF50;
+  }
+
+  /* Feature section styles */
+  .feature-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns for two items per row */
+    grid-gap: 40px;
+    /* margin-top: 60px; */
+  }
+
+  .feature {
+    background-color: #2a2b30;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .feature:hover {
+    transform: translateY(-10px);
+  }
+
+  .feature i {
+    font-size: 36px;
+    color: #4CAF50;
+    margin-bottom: 20px;
+  }
+
+  .feature h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .feature p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #b3b3b3;
+  }
+
+
+  .strip {
+    width: 130%;
+    height: 80px;
+    margin-left: -4rem;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.2),
+      0 4px 12px rgba(0, 0, 0, 0.1),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 5rem;
+  }
+
+  .ticker-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ticker-wrapper::before,
+  .ticker-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+  }
+
+  .ticker-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, #1a1b1e, transparent);
+  }
+
+  .ticker-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, #1a1b1e, transparent);
+  }
+
+  .ticker-content {
+    display: inline-flex;
+    animation: ticker-move 30s linear infinite;
+    height: 100%;
+    align-items: center;
+  }
+
+  .ticker-item {
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    white-space: nowrap;
+    color: #ffffff;
+    transition: transform 0.3s ease;
+  }
+
+  .ticker-item:hover {
+    transform: scale(1.05);
+  }
+
+  .crypto-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #a0a0a0;
+  }
+
+  .crypto-price {
+    margin-left: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .change {
+    margin-left: 12px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .positive {
+    background-color: rgba(46, 204, 113, 0.15);
+    color: #2ecc71;
+  }
+
+  .negative {
+    background-color: rgba(231, 76, 60, 0.15);
+    color: #e74c3c;
+  }
+
+  @keyframes ticker-move {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .divider {
+    width: 1px;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 0 20px;
+  }
+
+.more-info {
+  margin-top: 15px;
+  color: #dddddd;
+}
+

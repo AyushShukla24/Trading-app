@@ -1,0 +1,28 @@
+<div class="lol">
+    <div class="otp-container">
+      <h1>Verify OTP</h1>
+      
+      <div class="gif-container">
+        <img src="otp.gif" alt="Verification GIF" />
+      </div>
+  
+      <form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
+        <div class="otp-inputs">
+          <input type="text" maxlength="1" formControlName="otp1" (keyup)="moveToNext($event, 'otp1')" />
+          <input type="text" maxlength="1" formControlName="otp2" (keyup)="moveToNext($event, 'otp2')" />
+          <input type="text" maxlength="1" formControlName="otp3" (keyup)="moveToNext($event, 'otp3')" />
+          <input type="text" maxlength="1" formControlName="otp4" (keyup)="moveToNext($event, 'otp4')" />
+          <input type="text" maxlength="1" formControlName="otp5" (keyup)="moveToNext($event, 'otp5')" />
+          <input type="text" maxlength="1" formControlName="otp6" (keyup)="moveToNext($event, 'otp6')" />
+        </div>
+  
+        <div class="error-msg" *ngIf="otpForm.invalid && otpForm.touched">
+          <small *ngIf="otpForm.hasError('required')">OTP is required</small>
+          <small *ngIf="otpForm.hasError('incomplete')">OTP must be exactly 6 digits</small>
+        </div>
+  
+        <button class="myBtn" type="submit" [disabled]="otpForm.invalid">Verify OTP</button>
+      </form>
+    </div>
+  </div>
+  
