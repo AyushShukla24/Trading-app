@@ -1,0 +1,80 @@
+<section class="crypto-section">
+  <div class="container">
+    <h2 class="section-title">Cryptocurrency Market</h2>
+    <i routerLink="/" *ngIf="isStockRoute" routerLink="/" class="fa-solid fa-home home-btn"></i>
+    
+    <div class="loading-state" *ngIf="isLoading">
+      <div class="loader"></div>
+      <p>Fetching latest market data...</p>
+    </div>
+
+    <div class="error-state" *ngIf="isError">
+      <div class="error-icon">⚠️</div>
+      <h3>Oops! Something went wrong</h3>
+      <p>Unable to fetch market data. Please try again later.</p>
+    </div>
+
+    <div class="table-container" *ngIf="!isLoading && !isError">
+      <table class="crypto-table">
+        <thead>
+          <tr>
+            <th class="rank-col">#</th>
+            <th class="name-col">Name</th>
+            <th class="price-col">Price</th>
+            <th class="change-col">24h Change</th>
+            <th class="cap-col">Market Cap</th>
+            <th class="volume-col">Volume (24h)</th>
+            <th class="action-col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stock of paginatedStocks; let i = index" 
+              class="crypto-row"
+              [class.even-row]="i % 2 === 0">
+            <td class="rank-col">
+              <span class="rank">{{stock.marketCapRank}}</span>
+            </td>
+            <td class="name-col">
+              <div class="crypto-info">
+                <img [src]="stock.image" [alt]="stock.name" class="crypto-icon">
+                <div class="crypto-name">
+                  <span class="name">{{stock.name}}</span>
+                  <span class="symbol">{{stock.symbol}}</span>
+                </div>
+              </div>
+            </td>
+            <td class="price-col">
+              <span class="price">${{stock.lastPrice | number:'1.2-2'}}</span>
+            </td>
+            <td class="change-col">
+              <span class="change" [class.positive]="stock.priceChangePercentage > 0" 
+                                 [class.negative]="stock.priceChangePercentage < 0">
+                {{stock.priceChangePercentage | number:'1.2-2'}}%
+              </span>
+            </td>
+            <td class="cap-col">
+              <span class="cap">${{stock.marketCap | number}}</span>
+            </td>
+            <td class="volume-col">
+              <span class="volume">${{stock.total_volume | number}}</span>
+            </td>
+            <td class="action-col">
+              <button class="trade-button" (click)="goToCard(stock)">
+                Trade
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pagination">
+        <button *ngFor="let page of [].constructor(totalPages); let i = index"
+                class="page-button"
+                [class.active]="currentPage === i + 1"
+                (click)="changePage(i + 1)">
+          {{i + 1}}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,90 @@
+<!-- portfolio.component.html -->
+<app-navbar/>
+<body>
+  <div class="portfolio-container">
+    <div class="totals-grid">
+      <div class="total-card">
+        <div class="total-card-content">
+          <span class="label">Total Portfolio Value</span>
+          <span class="value">{{totalPortfolioValue | currency}}</span>
+          <span class="change" [ngClass]="totalProfitLoss >= 0 ? 'positive' : 'negative'">
+            {{totalProfitLoss >= 0 ? '+' : ''}}{{(totalProfitLoss / totalInvested * 100) | number:'1.1-1'}}% 
+            {{totalProfitLoss >= 0 ? '↑' : '↓'}}
+          </span>
+        </div>
+      </div> 
+
+      <div class="total-card">
+        <div class="total-card-content">
+          <span class="label">Total Invested</span>
+          <span class="value">{{totalInvested | currency}}</span>
+        </div>
+      </div>
+
+      <div class="total-card">
+        <div class="total-card-content">
+          <span class="label">Total Profit/Loss</span>
+          <span class="value">{{totalProfitLoss >= 0 ? '+' : ''}}{{totalProfitLoss | currency}}</span>
+          <span class="change" [ngClass]="totalProfitLoss >= 0 ? 'positive' : 'negative'">
+            {{totalProfitLoss >= 0 ? '+' : ''}}{{(totalProfitLoss / totalInvested * 100) | number:'1.1-1'}}% 
+            {{totalProfitLoss >= 0 ? '↑' : '↓'}}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Investment Overview Chart -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="gradient-text">Investment Overview</h2>
+      </div>
+      <div class="chart-wrapper">
+        <canvas id="investmentChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Holdings Table -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="gradient-text">Your Crypto Holdings</h2>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Asset</th>
+              <th class="text-right">Holdings</th>
+              <th class="text-right">Buy Price</th>
+              <th class="text-right">Current Price</th>
+              <th class="text-right">Current Value</th>
+              <th class="text-right">Profit/Loss</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let holding of holdings">
+              <td>
+                <div class="asset-name">
+                  <span class="crypto-icon">{{getCryptoSymbol(holding.name)}}</span>
+                  <span class="white">{{holding.name}}</span>
+                </div>
+              </td>
+              <td class="text-right white">{{holding.quantity}} {{holding.symbol}}</td>
+              <td class="text-right white">{{holding.purchasePrice | currency}}</td>
+              <td class="text-right white">{{holding.currentPrice | currency}}</td>
+              <td class="text-right white">{{holding.currentPrice * holding.quantity | currency}}</td>
+              <td class="text-right">
+                <div class="gain-loss" [ngClass]="getProfitLossClass(holding)">
+                  <span>{{getProfitLossValue(holding) | currency}}</span>
+                  <span class="percentage">
+                    ({{getProfitLossPercentage(holding) | number:'1.1-1'}}%)
+                    {{getProfitLossValue(holding) >= 0 ? '↑' : '↓'}}
+                  </span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>

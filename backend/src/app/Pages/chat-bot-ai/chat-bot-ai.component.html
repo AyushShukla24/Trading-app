@@ -1,0 +1,63 @@
+<div class="chatbot-container" [class.open]="isOpen">
+    <button class="chat-toggle" (click)="toggleChat()" [class.active]="isOpen">
+      <i class="fas" [class.fa-times]="isOpen" [class.fa-comment-dots]="!isOpen"></i>
+      <span class="tooltip">Ask Questions</span>
+    </button>
+  
+    <div class="chat-window">
+      <div class="chat-header">
+        <div class="header-content">
+          <span class="logo">Ask Anything</span>
+          <span class="status-indicator">
+            <span class="dot"></span>
+            Online
+          </span>
+        </div>
+        <button class="close-button" (click)="toggleChat()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+  
+      <div class="chat-content" #chatContent>
+        <div *ngFor="let message of messages" 
+             class="message-wrapper"
+             [class.user-wrapper]="message.role === 'user'"
+             [class.assistant-wrapper]="message.role === 'assistant'">
+          <div class="message" [class.user]="message.role === 'user'" [class.assistant]="message.role === 'assistant'">
+            <div class="message-content">
+              <span [class.user-text]="message.role === 'user'">{{ message.content }}</span>
+            </div>
+            <div class="message-info">
+              <span class="timestamp">{{ message.timestamp | date:'shortTime' }}</span>
+              <i *ngIf="message.role === 'user'" class="fas fa-check-double"></i>
+            </div>
+          </div>
+        </div>
+  
+        <div *ngIf="isLoading" class="typing-indicator">
+          <div class="typing-bubble"></div>
+          <div class="typing-bubble"></div>
+          <div class="typing-bubble"></div>
+        </div>
+      </div>
+  
+      <div class="input-container">
+        <form (ngSubmit)="sendMessage()" #chatForm="ngForm">
+          <div class="input-wrapper">
+            <input
+              id="user-input"
+              [(ngModel)]="userInput"
+              name="userMessage"
+              type="text"
+              placeholder="Ask me anything..."
+              [disabled]="isLoading"
+              required
+            />
+            <button type="submit" [disabled]="isLoading || !userInput.trim()">
+              <i class="fas" [class.fa-paper-plane]="!isLoading" [class.fa-spinner]="isLoading" [class.fa-spin]="isLoading"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
