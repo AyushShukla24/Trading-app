@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   baseApiUrl: 'http://localhost:8081/api',
   authTokenApiUrl: 'http://localhost:8081/api/auth',
   otpApiUrl: 'http://localhost:8081/api/otp',
